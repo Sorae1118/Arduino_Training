@@ -5,8 +5,8 @@
 const char *ssid = "DIT_CS_703";  
 const char *password = "";   
 
-#define BOT_TOKEN "6451399833:AAG2nJ01i2xw5IDC8Sv1a0hnlbxsa-fZTic"
-#define CHAT_ID "6858765176"
+#define BOT_TOKEN "토큰"
+#define CHAT_ID "챗 아이디"
 
 X509List cert(TELEGRAM_CERTIFICATE_ROOT);
 
