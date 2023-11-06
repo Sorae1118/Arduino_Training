@@ -7,7 +7,7 @@
 
 DHT dht(DHTPin, DHTType);
 
-const char* UBIDOTS_TOKEN = "BBUS-bH9cxPVC1bovL3eAd34w8AQvVlLJCx";
+const char* UBIDOTS_TOKEN = "Ubidots 계정 토큰";
 const char* WIFI_SSID = "DIT_CS_703";  
 const char* WIFI_PASS = "";   
 
