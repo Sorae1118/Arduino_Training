@@ -5,7 +5,7 @@
 const char *ssid = "DIT_CS_703";  
 const char *password = "";   
 
-#define BOT_TOKEN "토큰"
+#define BOT_TOKEN "봇 토큰"
 #define CHAT_ID "챗 아이디"
 
 X509List cert(TELEGRAM_CERTIFICATE_ROOT);
