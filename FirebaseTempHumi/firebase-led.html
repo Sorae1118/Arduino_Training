@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .on-button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .off-button {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>IoT Cloud Remote LED Control Wep App</h2>
+    <h1 id="OUT_TEXT"></h1>
+    <button class="on-button" id="onBtn">LED ON</button>
+    <button class="off-button" id="offBtn">LED OFF</button>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from
+            "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue, child } from
+            "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyByF0PKYKYXu9Hvlc7-uIteN6xzgtPQWWQ",
+            authDomain: "fir-led-control-c7013.firebaseapp.com",
+            databaseURL: "https://fir-led-control-c7013-default-rtdb.firebaseio.com",
+            projectId: "fir-led-control-c7013",
+            storageBucket: "fir-led-control-c7013.appspot.com",
+            messagingSenderId: "1093705102349",
+            appId: "1:1093705102349:web:354a2f769e5d7c7eed1144",
+            measurementId: "G-L75ESY17GX"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        console.log(db);
+        var OnButton = document.getElementById("onBtn");
+        OnButton.addEventListener("click", onBtnClick, false);
+        var OffButton = document.getElementById("offBtn");
+        OffButton.addEventListener("click", offBtnClick, false);
+        function onBtnClick(event) {
+            set(ref(db, 'LED_STATUS'), 'ON');
+            console.log("LED ON");
+        }
+        function offBtnClick(event) {
+            set(ref(db, 'LED_STATUS'), 'OFF');
+            console.log("LED OFF");
+        }
+        const dbRef = ref(db, 'LED_STATUS');
+        onValue(dbRef, (snapshot) => {
+            console.log(snapshot.val());
+            OUT_TEXT.innerText = 'LED is ' + snapshot.val();
+        });
+    </script>
+
+
+</body>
+
+</html>
